@@ -4,14 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Shubham ✦ Vidisha — Shubh Vivah</title>
-  <meta name="description" content="शुभ विवाह निमंत्रण — Shubham Chauhan & Dr. Vidisha Chauhan · Monday, 23 November 2026 · Gram Rali Chauhan, Qila Road, Meerut" />
+  <meta name="description" content="शुभ विवाह निमंत्रण — Shubham Chauhan & Dr. Vidisha Chauhan · Monday, 23 November 2026 · Gram Rali Chauhan, Kila Road, Meerut" />
   <meta name="theme-color" content="#14070a" />
   <meta property="og:title" content="Shubham ✦ Vidisha — Shubh Vivah" />
-  <meta property="og:description" content="Monday, 23 November 2026 · Gram Rali Chauhan, Qila Road, Meerut" />
+  <meta property="og:description" content="Monday, 23 November 2026 · Gram Rali Chauhan, Kila Road, Meerut" />
   <link rel="icon" href="assets/art/kalash-gold.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@1,400;1,500&family=Tiro+Devanagari+Hindi:ital@0;1&family=Yatra+One&display=swap" rel="stylesheet" />
+  <script>(function () { var m = /[?&]edition=(main|wedding|full)\b/i.exec(location.search); document.documentElement.dataset.edition = window.EDITION || (m ? m[1].toLowerCase() : 'main'); })();</script>
+  <style>
+    html[data-edition="main"] [data-only]:not([data-only~="main"]),
+    html[data-edition="wedding"] [data-only]:not([data-only~="wedding"]),
+    html[data-edition="full"] [data-only]:not([data-only~="full"]) { display: none !important; }
+  </style>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body class="is-locked">
@@ -40,9 +46,13 @@
           <p class="cover-shri deva">॥ श्री गणेशाय नमः ॥</p>
           <p class="cover-eyebrow deva">शुभ विवाह</p>
           <h1 class="cover-names"><span>Shubham</span><i class="deva">संग</i><span>Vidisha</span></h1>
-          <div class="cover-date">
+          <div class="cover-date" data-only="main">
             <p class="deva">सोमवार, 23 नवम्बर 2026</p>
             <p class="en">Monday · 23 November 2026</p>
+          </div>
+          <div class="cover-date" data-only="wedding full">
+            <p class="deva">मंगलवार, 24 नवम्बर 2026</p>
+            <p class="en">Tuesday · 24 November 2026</p>
           </div>
           <button class="gate-btn" type="button">
             <span class="deva">निमंत्रण खोलें</span>
@@ -98,13 +108,18 @@
           </div>
           <div class="hero-date">
             <span class="line"></span>
-            <div>
+            <div data-only="main">
               <p class="deva">सोमवार, 23 नवम्बर 2026</p>
               <p class="en">Monday · 23 November 2026</p>
             </div>
+            <div data-only="wedding full">
+              <p class="deva">मंगलवार, 24 नवम्बर 2026</p>
+              <p class="en">Tuesday · 24 November 2026</p>
+            </div>
             <span class="line"></span>
           </div>
-          <p class="hero-place">Gram Rali Chauhan · Qila Road · Meerut</p>
+          <p class="hero-place" data-only="main">Gram Rali Chauhan · Kila Road · Meerut</p>
+          <p class="hero-place" data-only="wedding full">3rd Milestone · Meerut</p>
         </div>
         <div class="scroll-hint"><span>Scroll</span><i></i></div>
       </section>
@@ -220,7 +235,9 @@
         <div class="section-head dark">
           <p class="eyebrow deva">॥ मांगलिक कार्यक्रम ॥</p>
           <h2 class="title">The Celebrations</h2>
-          <p class="lead deva">20 – 23 नवम्बर 2026</p>
+          <p class="lead deva" data-only="main">20 – 23 नवम्बर 2026</p>
+          <p class="lead deva" data-only="full">20 – 24 नवम्बर 2026</p>
+          <p class="lead deva" data-only="wedding">मंगलवार, 24 नवम्बर 2026</p>
         </div>
 
         <div class="procession" aria-hidden="true">
@@ -237,7 +254,7 @@
           </svg>
           <div class="tl-diya" aria-hidden="true"><span class="flame"></span><span class="bowl"></span></div>
 
-          <article class="ev ev-left">
+          <article class="ev ev-left" data-only="main full">
             <div class="ev-card">
               <div class="ev-icon"><svg viewBox="0 0 64 64"><path d="M8 34h48c0 12-11 20-24 20S8 46 8 34Z" fill="#f2c230" fill-opacity=".35"/><path d="M8 34h48c0 12-11 20-24 20S8 46 8 34Z"/><path d="M14 34c4-5 10-7 18-7s14 2 18 7"/><path d="M40 10l6 18M44 9l-2 2"/><circle cx="24" cy="18" r="2.5" fill="#f2a516"/><circle cx="32" cy="12" r="2" fill="#f2a516"/><circle cx="18" cy="10" r="1.6" fill="#f2a516"/></svg></div>
               <p class="ev-date"><span class="deva">शुक्रवार, 20 नवम्बर 2026</span><span class="en">Friday · 20 Nov 2026</span></p>
@@ -248,7 +265,7 @@
             </div>
           </article>
 
-          <article class="ev ev-right">
+          <article class="ev ev-right" data-only="main full">
             <div class="ev-card">
               <div class="ev-icon"><svg viewBox="0 0 64 64"><path d="M22 58V30c0-3 4-3 4 0v-8c0-3 4-3 4 0v-4c0-3 4-3 4 0v4c0-3 4-3 4 0v14l4-6c2-3 6-1 4 2l-8 14c-2 4-4 8-4 8H22Z" fill="#c2185b" fill-opacity=".08"/><path d="M22 58V30c0-3 4-3 4 0v-8c0-3 4-3 4 0v-4c0-3 4-3 4 0v4c0-3 4-3 4 0v14l4-6c2-3 6-1 4 2l-8 14c-2 4-4 8-4 8H22Z"/><circle cx="31" cy="42" r="4"/><circle cx="31" cy="42" r="1.2" fill="currentColor"/><path d="M25 50h12M27 34v-4M33 32v-6"/></svg></div>
               <p class="ev-date"><span class="deva">सोमवार, 23 नवम्बर 2026</span><span class="en">Monday · 23 Nov 2026</span></p>
@@ -259,7 +276,7 @@
             </div>
           </article>
 
-          <article class="ev ev-left">
+          <article class="ev ev-left" data-only="main full">
             <div class="ev-card">
               <div class="ev-icon"><img src="assets/art/kalash-maroon.png" alt="" /></div>
               <p class="ev-date"><span class="deva">सोमवार, 23 नवम्बर 2026</span><span class="en">Monday · 23 Nov 2026</span></p>
@@ -270,7 +287,7 @@
             </div>
           </article>
 
-          <article class="ev ev-right">
+          <article class="ev ev-right" data-only="main full">
             <div class="ev-card">
               <div class="ev-icon"><svg viewBox="0 0 64 64"><ellipse cx="32" cy="40" rx="26" ry="8"/><path d="M8 40c2 10 12 14 24 14s22-4 24-14"/><circle cx="22" cy="34" r="5"/><circle cx="34" cy="31" r="6"/><circle cx="45" cy="35" r="4"/><path d="M30 18c0-4 4-4 4-8M24 20c0-3 3-3 3-6M38 20c0-3 3-3 3-6"/></svg></div>
               <p class="ev-date"><span class="deva">सोमवार, 23 नवम्बर 2026</span><span class="en">Monday · 23 Nov 2026</span></p>
@@ -278,6 +295,39 @@
               <h3 class="ev-name deva">प्रीतिभोज</h3>
               <p class="ev-en">Preetibhoj · Wedding Feast</p>
               <p class="ev-desc">A feast of love and togetherness — join us at the table to bless the newlyweds.</p>
+            </div>
+          </article>
+
+          <article class="ev ev-left" data-only="wedding full">
+            <div class="ev-card">
+              <div class="ev-icon"><img src="assets/art/groom-maroon.png" alt="" /></div>
+              <p class="ev-date"><span class="deva">मंगलवार, 24 नवम्बर 2026</span><span class="en">Tuesday · 24 Nov 2026</span></p>
+              <p class="ev-time"><span class="deva">प्रातः 08.00 बजे</span> · 8:00 AM</p>
+              <h3 class="ev-name deva">घुड़चढ़ी</h3>
+              <p class="ev-en">Gurchadi</p>
+              <p class="ev-desc">The groom mounts the decorated mare amid dhol and blessings — the joyful start of the baraat.</p>
+            </div>
+          </article>
+
+          <article class="ev ev-right" data-only="wedding full">
+            <div class="ev-card">
+              <div class="ev-icon"><img src="assets/art/turhi-l-maroon.png" alt="" /></div>
+              <p class="ev-date"><span class="deva">मंगलवार, 24 नवम्बर 2026</span><span class="en">Tuesday · 24 Nov 2026</span></p>
+              <p class="ev-time"><span class="deva">प्रातः 10.00 बजे</span> · 10:00 AM</p>
+              <h3 class="ev-name deva">बारात प्रस्थान</h3>
+              <p class="ev-en">Baraat Prasthan</p>
+              <p class="ev-desc">With music and dancing, the baraat sets off from Rali Chauhan for the wedding venue.</p>
+            </div>
+          </article>
+
+          <article class="ev ev-left" data-only="wedding full">
+            <div class="ev-card">
+              <div class="ev-icon"><svg viewBox="0 0 64 64"><path d="M32 10c7 9 11 14 11 21a11 11 0 0 1-22 0c0-7 4-12 11-21Z" fill="#e8892b" fill-opacity=".25"/><path d="M32 10c7 9 11 14 11 21a11 11 0 0 1-22 0c0-7 4-12 11-21Z"/><path d="M32 24c3 4 5 7 5 10a5 5 0 0 1-10 0c0-3 2-6 5-10Z"/><path d="M12 50h40M16 50l4-8h24l4 8M14 56h36"/></svg></div>
+              <p class="ev-date"><span class="deva">मंगलवार, 24 नवम्बर 2026</span><span class="en">Tuesday · 24 Nov 2026</span></p>
+              <p class="ev-time"><span class="deva">विवाह स्थल</span> · 3rd Milestone, Meerut</p>
+              <h3 class="ev-name deva">शुभ विवाह</h3>
+              <p class="ev-en">Shubh Vivah · The Wedding</p>
+              <p class="ev-desc">The sacred pheras around the holy fire — Shubham and Vidisha begin their life together.</p>
             </div>
           </article>
 
@@ -291,26 +341,45 @@
           <img class="turhi turhi-r" src="assets/art/turhi-r-gold.png" alt="" aria-hidden="true" />
           <div class="venue-arch">
             <svg class="toran-arch" viewBox="0 0 600 420" aria-hidden="true"></svg>
-            <div class="venue-text">
+            <div class="venue-text" data-only="main">
               <p class="eyebrow deva">-: कार्यक्रम स्थल :-</p>
               <h2 class="venue-name deva">ग्राम-राली चौहान,<br />किला रोड, मेरठ</h2>
-              <p class="venue-en">Gram Rali Chauhan, Qila Road, Meerut</p>
+              <p class="venue-en">Prachin Shiv Mandir, Rali Chauhan, Meerut</p>
+            </div>
+            <div class="venue-text" data-only="wedding full">
+              <p class="eyebrow deva">-: विवाह स्थल :-</p>
+              <h2 class="venue-name deva">थर्ड माइलस्टोन,<br />मेरठ</h2>
+              <p class="venue-en">3rd Milestone, Meerut · Tuesday, 24 Nov</p>
             </div>
           </div>
         </div>
         <div class="venue-actions">
-          <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=29.03101784,77.70895735">
-            <svg viewBox="0 0 24 24"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11Z"/><circle cx="12" cy="10" r="2"/></svg>
-            Get Directions
-          </a>
           <button class="btn ghost" type="button" id="addCal">
             <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4M12 13v5M9.5 15.5h5"/></svg>
             Add to Calendar
           </button>
         </div>
-        <div class="map-frame">
-          <iframe title="Venue map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-            src="https://maps.google.com/maps?q=29.03101784,77.70895735&z=16&output=embed"></iframe>
+        <div class="venue-grid">
+          <article class="venue-card" data-only="wedding full">
+            <p class="vc-events">Shubh Vivah · 24 Nov</p>
+            <h3 class="vc-name deva">थर्ड माइलस्टोन, मेरठ</h3>
+            <p class="vc-en">3rd Milestone, Meerut</p>
+            <div class="map-frame">
+              <iframe title="Wedding venue map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=29.03101784,77.70895735&z=16&output=embed"></iframe>
+            </div>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=29.03101784,77.70895735"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11Z"/><circle cx="12" cy="10" r="2"/></svg> Get Directions</a>
+          </article>
+          <article class="venue-card">
+            <p class="vc-events"><span data-only="main">Haldi · Mehandi · Mandha · Preetibhoj</span><span data-only="full">Haldi · Mehandi · Mandha · Preetibhoj · Gurchadi · Baraat Prasthan</span><span data-only="wedding">Gurchadi · Baraat Prasthan</span></p>
+            <h3 class="vc-name deva">ग्राम-राली चौहान, किला रोड, मेरठ</h3>
+            <p class="vc-en">Prachin Shiv Mandir, Rali Chauhan (Mehrab Khan Rd, Abdullapur)</p>
+            <div class="map-frame">
+              <iframe title="Rali Chauhan map" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                src="https://maps.google.com/maps?q=28.979512,77.774359&z=16&output=embed"></iframe>
+            </div>
+            <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=28.979512,77.774359"><svg viewBox="0 0 24 24"><path d="M12 21s-6-5.5-6-11a6 6 0 0 1 12 0c0 5.5-6 11-6 11Z"/><circle cx="12" cy="10" r="2"/></svg> Get Directions</a>
+          </article>
         </div>
       </section>
 
@@ -363,7 +432,8 @@
           <p class="closing-deva deva">आपकी उपस्थिति ही हमारा सौभाग्य है</p>
           <p class="closing-en">Your presence is our greatest blessing</p>
           <p class="closing-names"><span>Shubham</span><i>&amp;</i><span>Vidisha</span></p>
-          <p class="closing-date">23 · 11 · 2026</p>
+          <p class="closing-date" data-only="main">23 · 11 · 2026</p>
+          <p class="closing-date" data-only="wedding full">24 · 11 · 2026</p>
           <button class="btn" type="button" id="blessBtn">
             <svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10Z"/></svg>
             Shower Blessings

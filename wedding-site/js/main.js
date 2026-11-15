@@ -18,7 +18,12 @@
 
   CustomEase.create('curtain', 'M0,0 C0.5,0 0.2,1 1,1');
 
-  const WEDDING = new Date('2026-11-23T11:00:00+05:30');
+  // editions: main = 23 Nov only · wedding = 24 Nov only · full = 23 + 24 Nov
+  const EDITION = ['main', 'wedding', 'full'].includes(document.documentElement.dataset.edition) ? document.documentElement.dataset.edition : 'main';
+  const HAS_23 = EDITION !== 'wedding';
+  const HAS_24 = EDITION !== 'main';
+  // countdown target: Mandha (23 only) or Gurchadi on the wedding day
+  const WEDDING = new Date(HAS_24 ? '2026-11-24T08:00:00+05:30' : '2026-11-23T11:00:00+05:30');
   const PETAL_COLORS = ['#f2a516', '#e8892b', '#d9361b', '#c2185b', '#f6c453', '#e55b7a'];
   const reveal = (trigger, start = 'top 88%') => ({ trigger, start, once: true });
 
@@ -418,24 +423,31 @@
       g.style.setProperty('--dl', (-Math.random() * 1.5).toFixed(2) + 's');
     });
     gsap.from('.venue-actions .btn', { opacity: 0, y: 20, stagger: 0.1, scrollTrigger: reveal('.venue-actions', 'top 95%') });
-    gsap.from('.map-frame', { opacity: 0, y: 40, scale: 0.96, duration: 0.9, scrollTrigger: reveal('.map-frame', 'top 95%') });
+    gsap.from('.venue-card', { opacity: 0, y: 40, scale: 0.96, duration: 0.8, stagger: 0.12, scrollTrigger: reveal('.venue-grid', 'top 92%') });
 
     $('#addCal').addEventListener('click', () => {
+      const RALI = 'LOCATION:Prachin Shiv Mandir\\, Rali Chauhan\\, Kila Road\\, Meerut';
+      const MILE = 'LOCATION:3rd Milestone\\, Meerut';
+      const ev = (uid, start, end, summary, loc, extra = []) => [
+        'BEGIN:VEVENT', `UID:${uid}@shubham-vidisha`, 'DTSTAMP:20261115T000000Z', start, end, `SUMMARY:${summary} — Shubham & Vidisha`, loc, ...extra, 'END:VEVENT',
+      ];
+      const alarm = ['BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Shubh Vivah celebrations tomorrow', 'END:VALARM'];
+      const events = [];
+      if (HAS_23) events.push(
+        ...ev('haldi-20261120', 'DTSTART;VALUE=DATE:20261120', 'DTEND;VALUE=DATE:20261121', 'Haldi', RALI),
+        ...ev('mehandi-20261123', 'DTSTART;VALUE=DATE:20261123', 'DTEND;VALUE=DATE:20261124', 'Mehandi', RALI),
+        ...ev('mandha-20261123', 'DTSTART:20261123T053000Z', 'DTEND:20261123T073000Z', 'Mandha', RALI, alarm),
+        ...ev('preetibhoj-20261123', 'DTSTART:20261123T073000Z', 'DTEND:20261123T100000Z', 'Preetibhoj', RALI),
+      );
+      if (HAS_24) events.push(
+        ...ev('gurchadi-20261124', 'DTSTART:20261124T023000Z', 'DTEND:20261124T043000Z', 'Gurchadi', RALI, alarm),
+        ...ev('baraat-20261124', 'DTSTART:20261124T043000Z', 'DTEND:20261124T060000Z', 'Baraat Prasthan', RALI),
+        ...ev('vivah-20261124', 'DTSTART;VALUE=DATE:20261124', 'DTEND;VALUE=DATE:20261125', 'Shubh Vivah (Wedding)', MILE),
+      );
       const ics = [
         'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ShubhVivah//Shubham-Vidisha//EN', 'CALSCALE:GREGORIAN',
-        'BEGIN:VEVENT', 'UID:haldi-20261120@shubhvivah', 'DTSTAMP:20261115T000000Z',
-        'DTSTART;VALUE=DATE:20261120', 'DTEND;VALUE=DATE:20261121',
-        'SUMMARY:Haldi — Shubham & Vidisha', 'LOCATION:Gram Rali Chauhan\\, Qila Road\\, Meerut', 'END:VEVENT',
-        'BEGIN:VEVENT', 'UID:mehandi-20261123@shubhvivah', 'DTSTAMP:20261115T000000Z',
-        'DTSTART;VALUE=DATE:20261123', 'DTEND;VALUE=DATE:20261124',
-        'SUMMARY:Mehandi — Shubham & Vidisha', 'LOCATION:Gram Rali Chauhan\\, Qila Road\\, Meerut', 'END:VEVENT',
-        'BEGIN:VEVENT', 'UID:shubham-vidisha-20261123@shubhvivah', 'DTSTAMP:20261115T000000Z',
-        'DTSTART:20261123T053000Z', 'DTEND:20261123T100000Z',
-        'SUMMARY:Mandha & Preetibhoj — Shubham & Vidisha',
-        'DESCRIPTION:Mandha — 11:00 AM\\nPreetibhoj — 1:00 PM\\nWith love\\, the Chauhan family',
-        'LOCATION:Gram Rali Chauhan\\, Qila Road\\, Meerut',
-        'BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Shubh Vivah tomorrow', 'END:VALARM',
-        'END:VEVENT', 'END:VCALENDAR',
+        ...events,
+        'END:VCALENDAR',
       ].join('\r\n');
       const a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
@@ -514,6 +526,8 @@
   }
 
   function boot() {
+    // drop the other edition's blocks before any animation setup
+    $$('[data-only]').forEach((el) => { if (!el.dataset.only.split(/\s+/).includes(EDITION)) el.parentNode.removeChild(el); });
     smoothScroll();
     mountMandalas();
     musicUI();
