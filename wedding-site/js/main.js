@@ -22,6 +22,9 @@
   const EDITION = ['main', 'wedding', 'full'].includes(document.documentElement.dataset.edition) ? document.documentElement.dataset.edition : 'main';
   const HAS_23 = EDITION !== 'wedding';
   const HAS_24 = EDITION !== 'main';
+  // side: groom (default) or bride (/vidisha/ — Vidisha first, no Gurchadi / Baraat Prasthan)
+  const BRIDE = window.SIDE === 'bride';
+  const COUPLE = BRIDE ? 'Vidisha & Shubham' : 'Shubham & Vidisha';
   // countdown target: Mandha (23 only) or Gurchadi on the wedding day
   const WEDDING = new Date(HAS_24 ? '2026-11-24T08:00:00+05:30' : '2026-11-23T11:00:00+05:30');
   const PETAL_COLORS = ['#f2a516', '#e8892b', '#d9361b', '#c2185b', '#f6c453', '#e55b7a'];
@@ -429,7 +432,7 @@
       const RALI = 'LOCATION:Prachin Shiv Mandir\\, Rali Chauhan\\, Kila Road\\, Meerut';
       const MILE = 'LOCATION:3rd Milestone\\, Meerut';
       const ev = (uid, start, end, summary, loc, extra = []) => [
-        'BEGIN:VEVENT', `UID:${uid}@shubham-vidisha`, 'DTSTAMP:20261115T000000Z', start, end, `SUMMARY:${summary} — Shubham & Vidisha`, loc, ...extra, 'END:VEVENT',
+        'BEGIN:VEVENT', `UID:${uid}@shubham-vidisha`, 'DTSTAMP:20261115T000000Z', start, end, `SUMMARY:${summary} — ${COUPLE}`, loc, ...extra, 'END:VEVENT',
       ];
       const alarm = ['BEGIN:VALARM', 'TRIGGER:-P1D', 'ACTION:DISPLAY', 'DESCRIPTION:Shubh Vivah celebrations tomorrow', 'END:VALARM'];
       const events = [];
@@ -439,10 +442,12 @@
         ...ev('mandha-20261123', 'DTSTART:20261123T053000Z', 'DTEND:20261123T073000Z', 'Mandha', RALI, alarm),
         ...ev('preetibhoj-20261123', 'DTSTART:20261123T073000Z', 'DTEND:20261123T100000Z', 'Preetibhoj', RALI),
       );
-      if (HAS_24) events.push(
+      if (HAS_24 && !BRIDE) events.push(
         ...ev('gurchadi-20261124', 'DTSTART:20261124T023000Z', 'DTEND:20261124T043000Z', 'Gurchadi', RALI, alarm),
         ...ev('baraat-20261124', 'DTSTART:20261124T043000Z', 'DTEND:20261124T060000Z', 'Baraat Prasthan', RALI),
-        ...ev('vivah-20261124', 'DTSTART;VALUE=DATE:20261124', 'DTEND;VALUE=DATE:20261125', 'Shubh Vivah (Wedding)', MILE),
+      );
+      if (HAS_24) events.push(
+        ...ev('vivah-20261124', 'DTSTART;VALUE=DATE:20261124', 'DTEND;VALUE=DATE:20261125', 'Shubh Vivah (Wedding)', MILE, BRIDE ? alarm : []),
       );
       const ics = [
         'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//ShubhVivah//Shubham-Vidisha//EN', 'CALSCALE:GREGORIAN',
@@ -451,7 +456,7 @@
       ].join('\r\n');
       const a = document.createElement('a');
       a.href = URL.createObjectURL(new Blob([ics], { type: 'text/calendar' }));
-      a.download = 'Shubham-Vidisha-Shubh-Vivah.ics';
+      a.download = BRIDE ? 'Vidisha-Shubham-Shubh-Vivah.ics' : 'Shubham-Vidisha-Shubh-Vivah.ics';
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     });
@@ -501,6 +506,12 @@
         else target.scrollIntoView({ behavior: 'smooth' });
       });
     });
+    $$('.ev-venue-link').forEach((a) => a.addEventListener('click', (e) => {
+      e.preventDefault();
+      const target = $(a.getAttribute('href'));
+      if (lenis) lenis.scrollTo(target, { duration: 1.2 });
+      else target.scrollIntoView({ behavior: 'smooth' });
+    }));
     links[0].classList.add('active');
   }
 
